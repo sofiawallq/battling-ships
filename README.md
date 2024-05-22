@@ -21,9 +21,46 @@ The player and the computer takes turn in guessing the locations of the opponent
 
 ## Features
 
+### Flow chart
+
 ### Existing features
 
 Input from the user
 Places ships randomly on both players boards
 Ability to hide the Computers board from the other player
+
+### Features left to implement
+
+## Data model eg class
+
+## Testing
+
+Manually tested the program by doing the following:
+* Given invalid input on every place possible - letters instead of numbers, guesses outside of the board size, provided the same guess twice.
+* Continuosly testing the run.py in my local terminal and then on the Code Institute Heroku mock terminal.
+
+## Validator testing
+
+## Bugs 
+### Unsolved bugs
+
+
+## Deployment
+This project was deployed using Code Institutes mock terminal for Heroku
+Steps for deployment in Heroku:
+
+The site was deployed to GitHub pages. The steps to deploy are as follows:
+In the GitHub repository, navigate to the Settings tab
+From the source section drop-down menu, select the Master Branch
+Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+
+The link to the mock terminal can be found here - 
+
+
+## Credits
+### Content
+
+Function for
+
+Init section for board class project scope
 
