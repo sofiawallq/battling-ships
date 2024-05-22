@@ -75,6 +75,11 @@ def main():
     player_board = Board(size)
     computer_board = Board(size)
 
+    # Place ships for the player and computer
+    for ship_length in ships:
+        player_board.place_ship(ship_length)
+        computer_board.place_ship(ship_length)
+
     # Print player's battlefield
     print(f"{user_name}'s battlefield:")
     player_board.create_battlefield(reveal_ships=True)
