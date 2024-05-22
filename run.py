@@ -26,6 +26,25 @@ class Board:
                 print(" ".join(['S' if cell == 'S' else cell for cell in row]))
         print()    
 
+    def valid_ship_position(self, row, col, length, orientation):
+            """
+            Function for validating the placement of ships at the beginning of the game.
+            Making sure no ships overlaps.
+            """
+            if orientation == 'H':
+                if col + length > self.size:
+                    return False
+                for i in range(length):
+                    if self.board[row][col + i] != '~':
+                        return False
+            else:  # orientation == 'V'
+                if row + length > self.size:
+                    return False
+                for i in range(length):
+                    if self.board[row + i][col] != '~':
+                        return False
+            return True 
+
     def place_ship(self, length):
         """
         Function for placing ships on the board.
