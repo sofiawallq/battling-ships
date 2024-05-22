@@ -1,10 +1,12 @@
-import random 
+import random
 from random import randrange
+
 
 class Board:
     """
-    Main board. Creates both players battlefield according to given size, placing ships on the boards 
-    and handling players shots. __init__ function created with the help of Project 3 Portfolio Scope.
+    Main board. Creates both players battlefield according to given size,
+    placing ships on the boards and handling players shots.
+    __init__ function created with the help of Project 3 Portfolio Scope.
     """
     def __init__(self, size, num_ships=None, user_name=None):
         self.size = size
@@ -24,32 +26,32 @@ class Board:
                 print(" ".join(row))
             else:
                 print(" ".join(['S' if cell == 'S' else cell for cell in row]))
-        print()    
+        print()
 
     def valid_ship_position(self, row, col, length, orientation):
-            """
-            Function for validating the placement of ships at the beginning of the game.
-            Making sure no ships overlaps.
-            """
-            if orientation == 'H':
-                if col + length > self.size:
+        """
+        Function for validating the placement of ships at the beginning
+        of the game. Making sure no ships overlaps.
+        """
+        if orientation == 'H':
+            if col + length > self.size:
+                return False
+            for i in range(length):
+                if self.board[row][col + i] != '~':
                     return False
-                for i in range(length):
-                    if self.board[row][col + i] != '~':
-                        return False
-            else:  # orientation == 'V'
-                if row + length > self.size:
+        else:  # orientation == 'V'
+            if row + length > self.size:
+                return False
+            for i in range(length):
+                if self.board[row + i][col] != '~':
                     return False
-                for i in range(length):
-                    if self.board[row + i][col] != '~':
-                        return False
-            return True 
+        return True
 
     def place_ship(self, length):
         """
         Function for placing ships on the board.
         """
-        placed = False 
+        placed = False
         while not placed:
             orientation = random.choice(['H', 'V'])
             row = random.randint(0, self.size - 1)
@@ -63,7 +65,7 @@ class Board:
                     for i in range(length):
                         self.board[row + i][col] = 'S'
                         self.ships.append((row + i, col))
-                placed = True   
+                placed = True
 
 
 def get_username():
@@ -80,7 +82,8 @@ def get_username():
             print(f"Hello and welcome {user_name}, let the battle begin!\n")
             return user_name
         else:
-            print("Oops, not a valid username. Please enter your name again.")  
+            print("Oops, not a valid username. Please enter your name again.")
+
 
 def main():
     size = 6
@@ -92,7 +95,7 @@ def main():
     print("Size of ships vary from 2-5 spaces.")
     print("Top left corner is row 0, col 0\n")
     print("========================================\n")
-    user_name = get_username()  
+    user_name = get_username()
     print("========================================\n")
 
     # Create battlefields for player and computer
@@ -109,6 +112,7 @@ def main():
     player_board.create_battlefield(reveal_ships=True)
     # Print computer's visible battlefield
     print("Computer's battlefield:")
-    computer_board.create_battlefield(reveal_ships=False)   
-    
-main()               
+    computer_board.create_battlefield(reveal_ships=False)
+
+
+main()

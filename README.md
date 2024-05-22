@@ -26,7 +26,9 @@ The player and the computer takes turn in guessing the locations of the opponent
 ### Existing features
 
 Input from the user
+
 Places ships randomly on both players boards
+
 Ability to hide the Computers board from the other player
 
 ### Features left to implement
