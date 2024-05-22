@@ -1,3 +1,6 @@
+import random 
+from random import randrange
+
 class Board:
     """
     Main board. Creates both players battlefield according to given size, placing ships on the boards 
