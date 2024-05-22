@@ -23,6 +23,26 @@ class Board:
                 print(" ".join(['S' if cell == 'S' else cell for cell in row]))
         print()    
 
+    def place_ship(self, length):
+        """
+        Function for placing ships on the board.
+        """
+        placed = False 
+        while not placed:
+            orientation = random.choice(['H', 'V'])
+            row = random.randint(0, self.size - 1)
+            col = random.randint(0, self.size - 1)
+            if self.valid_ship_position(row, col, length, orientation):
+                if orientation == 'H':
+                    for i in range(length):
+                        self.board[row][col + i] = 'S'
+                        self.ships.append((row, col + i))
+                else:  # orientation == 'V'
+                    for i in range(length):
+                        self.board[row + i][col] = 'S'
+                        self.ships.append((row + i, col))
+                placed = True   
+
 def get_username():
     """
     Function for getting players name and thus creating a username.
