@@ -32,6 +32,8 @@ Places ships randomly on both players boards
 Ability to hide the Computers board from the other player
 
 ### Features left to implement
+* The ability for the player to position their own ships.
+* The option to choose your own board size and the number of ships.  
 
 ## Data model eg class
 
@@ -42,6 +44,8 @@ Manually tested the program by doing the following:
 * Continuosly testing the run.py in my local terminal and then on the Code Institute Heroku mock terminal.
 
 ## Validator testing
+I ran the PEP8 Python Validator a few times through out the coding process and fixed the errors as they occured, so that I would not have an enormous list to fix in the end.
+* ---No errors were returned from [PEP8 Python Validator](https://pep8ci.herokuapp.com/) in the finished project. Hopefully ...
 
 ## Bugs 
 ### Unsolved bugs
