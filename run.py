@@ -28,6 +28,9 @@ def get_username():
             print("Oops, not a valid username. Please enter your name again.")  
 
 def main():
+    size = 6
+    num_ships = 5
+    ships = [2, 3, 3, 4, 5]
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
     print("Board size: 6x6. Numb of ships: 5.")
