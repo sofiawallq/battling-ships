@@ -11,6 +11,16 @@ class Board:
         self.guesses = []
         self.ships = []
 
+    def create_battlefield(self):
+        """
+        Function for printing the board to the game area.
+        """
+        for row in self.board:
+                print(" ".join(row))
+            else:
+                print(" ".join(['S' if cell == 'S' else cell for cell in row]))
+        print()    
+
 def get_username():
     """
     Function for getting players name and thus creating a username.
