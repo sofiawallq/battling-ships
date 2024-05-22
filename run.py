@@ -11,11 +11,13 @@ class Board:
         self.guesses = []
         self.ships = []
 
-    def create_battlefield(self):
+    def create_battlefield(self, reveal_ships=False):
         """
         Function for printing the board to the game area.
+        Hiding computers ships from the other player with the reveal_ships.
         """
         for row in self.board:
+            if reveal_ships:
                 print(" ".join(row))
             else:
                 print(" ".join(['S' if cell == 'S' else cell for cell in row]))
@@ -48,5 +50,16 @@ def main():
     print("========================================\n")
     user_name = get_username()  
     print("========================================\n")
+
+    # Create battlefields for player and computer
+    player_board = Board(size)
+    computer_board = Board(size)
+
+    # Print player's battlefield
+    print(f"{user_name}'s battlefield:")
+    player_board.create_battlefield(reveal_ships=True)
+    # Print computer's visible battlefield
+    print("Computer's battlefield:")
+    computer_board.create_battlefield(reveal_ships=False)   
     
 main()               
