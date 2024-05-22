@@ -65,6 +65,7 @@ class Board:
                         self.ships.append((row + i, col))
                 placed = True   
 
+
 def get_username():
     """
     Function for getting players name and thus creating a username.
@@ -88,6 +89,7 @@ def main():
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
     print("Board size: 6x6. Numb of ships: 5.")
+    print("Size of ships vary from 2-5 spaces.")
     print("Top left corner is row 0, col 0\n")
     print("========================================\n")
     user_name = get_username()  
