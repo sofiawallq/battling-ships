@@ -1,31 +1,29 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# The great battle of the ships!
+This game is based on the classic Battleship game, created using Python and runs in the Code Institute mock terminal on Heroku.
 
-Welcome Sofia Wallqvist,
+The players goal is to find all of the opponents battleships before they find theirs.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## How to play
 
-## Reminders
+The game begins with an itroduction of the faktorer man har att göra med.
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+The player then enters a username and two game boards are then generated at random.
 
-## Creating the Heroku app
+The player can only see the ships on their board, marked with an "S".
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+There are five ships of various sizes that the player needs to locate in order to win. 
 
-1. `heroku/python`
-2. `heroku/nodejs`
+The player will then be asked to guess on the location of the opponents ships via cooordinates on the board and gets a response in form of a hit or miss.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+Hits are marked on the board with an "*", miss with a "X".
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+The player and the computer takes turn in guessing the locations of the opponents ships until one of them finds and sinks them all. 
 
-Connect your GitHub repository and deploy as normal.
+## Features
 
-## Constraints
+### Existing features
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+Input from the user
+Places ships randomly on both players boards
+Ability to hide the Computers board from the other player
 
------
-Happy coding!
