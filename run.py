@@ -34,35 +34,30 @@ class Board:
                 row = random.randint(0, self.size - 1)
                 col = random.randint(0, self.size - 1)
             if self.valid_ship_position(row, col, length, orientation):
-                    for i in range(length):
-                        if orientation == 'H':
-                            self.board[row][col + i] = 'S'
-                            self.ships.add((row, col + i))
-                else:  # orientation == 'V'
-                            self.board[row + i][col] = 'S'
-                            self.ships.add((row + i, col))
-                    break
 
-    
-                
-                                        
+                for i in range(length):
+                    if orientation == 'H':
+                        self.board[row][col + i] = 'S'
+                        self.ships.add((row, col + i))
+                    else:  # orientation == 'V'
+                        self.board[row + i][col] = 'S'
+                        self.ships.add((row + i, col))
+                    break
 
     def valid_ship_position(self, row, col, length, orientation):
         """
         Function for validating the placement of ships at the beginning
         of the game. Making sure no ships overlaps.
         """
-        if orientation == 'H':
-            if col + length > self.size:
-                return False
-            for i in range(length):
-                if self.board[row][col + i] != '~':
+        if orientation == 'H' and col + length > self.size:
+            return False
+        if orientation == 'V' and row + length > self.size:
+            return False
+
+        for i in range(length):
+            if orientation == 'H' and self.board[row][col + i] != '~':
                     return False
-        else:  # orientation == 'V'
-            if row + length > self.size:
-                return False
-            for i in range(length):
-                if self.board[row + i][col] != '~':
+            if orientation == 'H' and self.board[row][col + i] != '~':
                     return False
         return True
     
