@@ -171,7 +171,7 @@ def main():
         result = computer_board.handle_shot(row, col)
         print(result)
 
-        if result == "That was a hit!"
+        if result == "That was a hit!":
             player_score +=1
 
         # Computers turn
@@ -179,7 +179,7 @@ def main():
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
 
-        if result == "That was a hit!"
+        if result == "That was a hit!":
             player_score +=1
 
         print("========================================\n")
