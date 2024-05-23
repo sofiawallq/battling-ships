@@ -143,5 +143,10 @@ def main():
     print("Computer's battlefield:")
     computer_board.create_battlefield(reveal_ships=False)
 
+    # Player's turn
+    print("Take a shot at your opponents battlefield:")
+    row, col = player_shot(size)
+    result = computer_board.handle_shot(row, col)
+    print(result)
 
 main()
