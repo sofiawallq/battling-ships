@@ -165,7 +165,7 @@ def main():
         print("Computer's battlefield:")
         computer_board.print_board(reveal_ships=False)
 
-        # Player's turn
+        # Players turn
         print("Take a shot at your opponents battlefield:")
         row, col = battleship.get_player_shot(size)
         result = computer_board.handle_shot(row, col)
@@ -174,7 +174,7 @@ def main():
         if result == "That was a hit!"
             player_score +=1
 
-        # Computer's turn
+        # Computers turn
         row, col = battleship.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
@@ -183,6 +183,14 @@ def main():
             player_score +=1
 
         print("========================================\n")
+
+        #Print scores after each round
+        print("After this round, the scores are:")
+        print("{user_name}: {player_score}")
+        print("Computer: {computer_score}")
+        cont = input("Press any key to continue, or 'q' to quit")
+        if cont == 'q':
+            break
 
 
 main()
