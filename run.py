@@ -98,7 +98,7 @@ def player_shot(size):
                 print("Invalid input. Please enter valid numbers.")
 
 
-def get_computer_shot(size, previous_shots):
+def computer_shot(size, previous_shots):
     """
     Generate a random shot for the computer.
     Learned about randint from the Project Porfolio Scope.

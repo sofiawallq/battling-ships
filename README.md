@@ -48,6 +48,9 @@ I ran the PEP8 Python Validator a few times through out the coding process and f
 * ---No errors were returned from [PEP8 Python Validator](https://pep8ci.herokuapp.com/) in the finished project. Hopefully ...
 
 ## Bugs 
+
+There were a LOT of error messages regarding references to functions, arguments, methods and indentations throughout the coding, and Google became my saviour at this point. I've gone through a minimum of 50 error messages while running my program in the local terminal - some of them is visible in my commits, some aren't. But thanks to all the amasing problem solvers in different forums mentioned in the Credit-section, I was hopefully able solve them all. 
+
 ### Unsolved bugs
 
 
@@ -69,4 +72,6 @@ The link to the mock terminal can be found here -
 Function for
 
 Init section for board class project scope
+
+
 
