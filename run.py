@@ -136,17 +136,19 @@ def main():
         player_board.place_ship(ship_length)
         computer_board.place_ship(ship_length)
 
-    # Print player's battlefield
-    print(f"{user_name}'s battlefield:")
-    player_board.create_battlefield(reveal_ships=True)
-    # Print computer's visible battlefield
-    print("Computer's battlefield:")
-    computer_board.create_battlefield(reveal_ships=False)
+    #Main playing loop
+    while True:
+        # Print player's battlefield
+        print(f"{user_name}'s battlefield:")
+        player_board.create_battlefield(reveal_ships=True)
+        # Print computer's visible battlefield
+        print("Computer's battlefield:")
+        computer_board.create_battlefield(reveal_ships=False)
 
-    # Player's turn
-    print("Take a shot at your opponents battlefield:")
-    row, col = player_shot(size)
-    result = computer_board.handle_shot(row, col)
-    print(result)
+        # Player's turn
+        print("Take a shot at your opponents battlefield:")
+        row, col = player_shot(size)
+        result = computer_board.handle_shot(row, col)
+        print(result)
 
 main()
