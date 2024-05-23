@@ -15,7 +15,7 @@ class Board:
         self.guesses = set()
         self.ships = []
 
-    def create_battlefield(self, reveal_ships=False):
+    def print_board(self, reveal_ships=False):
         """
         Function for printing the board to the game area.
         Hiding computers ships from the other player with the reveal_ships.
@@ -82,9 +82,10 @@ class Board:
             return "That was a miss."
 
 
-def player_shot(size):
+def get_player_input(size):
         """
         Get the player's shot and validate the input from the player.
+        If input is invalid it loops to ask for new input from player.
         """
         while True:
             try:
@@ -96,9 +97,10 @@ def player_shot(size):
                     print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
             except ValueError:
                 print("Invalid input. Please enter valid numbers.")
+                return self.player_shot()
 
 
-def computer_shot(size, previous_shots):
+def get_computer_shot(size, previous_shots):
     """
     Generate a random shot for the computer.
     Learned about randint from the Project Porfolio Scope.
@@ -158,10 +160,10 @@ def main():
     while True:
         # Print player's battlefield
         print(f"{user_name}'s battlefield:")
-        player_board.create_battlefield(reveal_ships=True)
+        player_board.print_board(reveal_ships=True)
         # Print computer's visible battlefield
         print("Computer's battlefield:")
-        computer_board.create_battlefield(reveal_ships=False)
+        computer_board.print_board(reveal_ships=False)
 
         # Player's turn
         print("Take a shot at your opponents battlefield:")
