@@ -26,7 +26,7 @@ class Board:
             print(" ".join(['S' if cell == 'S' and reveal_ships else cell for cell in row]))
         print()
 
-    def place_ship(self, length):
+    def place_ship(self):
         """
         Function for placing ships on the board.
         """
@@ -35,14 +35,14 @@ class Board:
                 orientation = random.choice(['H', 'V'])
                 row = random.randint(0, self.size - 1)
                 col = random.randint(0, self.size - 1)
-            if self.valid_ship_position(row, col, length, orientation):
-                for i in range(length):
-                    if orientation == 'H':
-                        self.board[row][col + i] = 'S'
-                        self.ships.add((row, col + i))
-                    else:  # orientation == 'V'
-                        self.board[row + i][col] = 'S'
-                        self.ships.add((row + i, col))
+                if self.valid_ship_position(row, col, length, orientation):
+                    for i in range(length):
+                        if orientation == 'H':
+                            self.board[row][col + i] = 'S'
+                            self.ships.add((row, col + i))
+                        else:  # orientation == 'V'
+                            self.board[row + i][col] = 'S'
+                            self.ships.add((row + i, col))
                     break   
 
     def valid_ship_position(self, row, col, length, orientation):
@@ -135,7 +135,7 @@ def main():
     size = 6
     player_score = 0
     computer_score = 0
-    battleship = Battelship()
+    battleship = Battleship()
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
     print("Board size: 6x6. Number of ships: 5.")
@@ -166,12 +166,12 @@ def main():
 
         # Player's turn
         print("Take a shot at your opponents battlefield:")
-        row, col = get_player_shot(size)
+        row, col = battleship.get_player_shot(size)
         result = computer_board.handle_shot(row, col)
         print(result)
 
         # Computer's turn
-        row, col = get_computer_shot(size, computer_shots)
+        row, col = battleship.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         print("========================================\n")
