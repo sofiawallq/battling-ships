@@ -81,6 +81,21 @@ class Board:
             self.board[row][col] = 'X'
             return "That was a miss."
 
+    def player_shot(size):
+        """
+        Get the player's shot and validate the input from the player.
+        """
+        while True:
+            try:
+                row = int(input(f"Guess a row (0 to {size - 1}): "))
+                col = int(input(f"Guess a column (0 to {size - 1}): "))
+                if 0 <= row < size and 0 <= col < size:
+                    return row, col
+                else:
+                    print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
+            except ValueError:
+                print("Invalid input. Please enter valid numbers.")
+
 
 def get_username():
     """
