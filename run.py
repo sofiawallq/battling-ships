@@ -192,10 +192,12 @@ def main():
 
         #Print scores after each round
         print("After this round, the scores are:")
-        print("{user_name}: {player_score}")
-        print("Computer: {computer_score}")
-        cont = input("Press any key to continue, or 'q' to quit")
+        print(f"{user_name}: {player_score}")
+        print(f"Computer: {computer_score}")
+        cont = input("Press 'Enter' to continue, or 'q' to quit\n")
         if cont == 'q':
             break
+
+        print("========================================\n")
 
 main()
