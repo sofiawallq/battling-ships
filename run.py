@@ -1,6 +1,8 @@
 import random
 from random import randrange
 
+ships = [2, 3, 3, 4, 5]
+
 class Board:
     """
     Main game board. Creates both players battlefield according to given size,
@@ -29,12 +31,12 @@ class Board:
         Function for placing ships on the board.
         """
         for length in ships:
-            while True:
+            placed = False
+            while not placed:
                 orientation = random.choice(['H', 'V'])
                 row = random.randint(0, self.size - 1)
                 col = random.randint(0, self.size - 1)
             if self.valid_ship_position(row, col, length, orientation):
-
                 for i in range(length):
                     if orientation == 'H':
                         self.board[row][col + i] = 'S'
@@ -42,7 +44,7 @@ class Board:
                     else:  # orientation == 'V'
                         self.board[row + i][col] = 'S'
                         self.ships.add((row + i, col))
-                    break
+                    break   
 
     def valid_ship_position(self, row, col, length, orientation):
         """
@@ -80,7 +82,7 @@ class Board:
 class Battleship:
     """
     This class contains functions for handling both players shots.
-    It also contains the function for getting a username.
+    It also contains the function for getting a username from the player.
     """
     def get_player_shot(size):
             """
@@ -103,7 +105,7 @@ class Battleship:
     def get_computer_shot(size, previous_shots):
         """
         Generate a random shot for the computer.
-        Learned about randint from the Project Porfolio Scope.
+        Learned about randint from the Project Portfolio Scope.
         """
         while True:
             row = random.randint(0, size - 1)
@@ -130,53 +132,50 @@ class Battleship:
                 print("Oops, not a valid username. Please enter your name again.")
 
 
-    def main():
-        size = 6
-        num_ships = 5
-        ships = [2, 3, 3, 4, 5]
-        player_score = 0
-        computer_score = 0
+def main():
+    size = 6
+    player_score = 0
+    computer_score = 0
+    print("========================================\n")
+    print("Welcome to the great Battle of the ships!")
+    print("Board size: 6x6. Number of ships: 5.")
+    print("Size of ships vary from 2-5 spaces.")
+    print("Top left corner is row 0, col 0\n")
+    print("========================================\n")
+    user_name = Battleship.get_username()
+    print("========================================\n")
+
+    # Create battlefields for player and computer
+    player_board = Board(size)
+    computer_board = Board(size)
+
+    # Place ships for the player and computer
+    for ship_length in ships:
+        player_board.place_ship(ship_length)
+        computer_board.place_ship(ship_length)
+
+    computer_shots = set()    
+
+    #Main playing loop
+    while True:
+        # Print player's battlefield
+        print(f"{user_name}'s battlefield:")
+        player_board.print_board(reveal_ships=True)
+        # Print computer's visible battlefield
+        print("Computer's battlefield:")
+        computer_board.print_board(reveal_ships=False)
+
+        # Player's turn
+        print("Take a shot at your opponents battlefield:")
+        row, col = get_player_shot(size)
+        result = computer_board.handle_shot(row, col)
+        print(result)
+
+        # Computer's turn
+        row, col = get_computer_shot(size, computer_shots)
+        result = player_board.handle_shot(row, col)
+        print(f"Computer shot at ({row}, {col}) and {result}\n")
         print("========================================\n")
-        print("Welcome to the great Battle of the ships!")
-        print("Board size: 6x6. Number of ships: 5.")
-        print("Size of ships vary from 2-5 spaces.")
-        print("Top left corner is row 0, col 0\n")
-        print("========================================\n")
-        user_name = get_username()
-        print("========================================\n")
-
-        # Create battlefields for player and computer
-        player_board = Board(size)
-        computer_board = Board(size)
-
-        # Place ships for the player and computer
-        for ship_length in ships:
-            player_board.place_ship(ship_length)
-            computer_board.place_ship(ship_length)
-
-        computer_shots = set()    
-
-        #Main playing loop
-        while True:
-            # Print player's battlefield
-            print(f"{user_name}'s battlefield:")
-            player_board.print_board(reveal_ships=True)
-            # Print computer's visible battlefield
-            print("Computer's battlefield:")
-            computer_board.print_board(reveal_ships=False)
-
-            # Player's turn
-            print("Take a shot at your opponents battlefield:")
-            row, col = get_player_shot(size)
-            result = computer_board.handle_shot(row, col)
-            print(result)
-
-            # Computer's turn
-            row, col = get_computer_shot(size, computer_shots)
-            result = player_board.handle_shot(row, col)
-            print(f"Computer shot at ({row}, {col}) and {result}\n")
-            print("========================================\n")
 
 
-if __name__ == "__main__":
-    main()
+main()
