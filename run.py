@@ -133,6 +133,7 @@ class Battleship:
 
 def main():
     size = 6
+    num_ships = 5
     player_score = 0
     computer_score = 0
     battleship = Battleship()
@@ -170,10 +171,17 @@ def main():
         result = computer_board.handle_shot(row, col)
         print(result)
 
+        if result == "That was a hit!"
+            player_score +=1
+
         # Computer's turn
         row, col = battleship.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
+
+        if result == "That was a hit!"
+            player_score +=1
+
         print("========================================\n")
 
 
