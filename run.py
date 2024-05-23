@@ -130,6 +130,8 @@ def main():
     size = 6
     num_ships = 5
     ships = [2, 3, 3, 4, 5]
+    player_score = 0
+    computer_score = 0
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
     print("Board size: 6x6. Number of ships: 5.")
