@@ -1,7 +1,6 @@
 import random
 from random import randrange
 
-
 class Board:
     """
     Main board. Creates both players battlefield according to given size,
@@ -66,6 +65,21 @@ class Board:
                         self.board[row + i][col] = 'S'
                         self.ships.append((row + i, col))
                 placed = True
+    
+    def handle_shot(self, row, col):
+        """
+        Handle a shot at the given position and return whether it was a hit or miss.
+        """
+        if (row, col) in self.guesses:
+            return "Oh, you've already shot here!"
+        self.guesses.add((row, col))
+        if (row, col) in self.ships:
+            self.board[row][col] = '*'
+            self.ships.remove((row, col))
+            return "That was a hit!"
+        else:
+            self.board[row][col] = 'X'
+            return "That was a miss."
 
 
 def get_username():
@@ -91,7 +105,7 @@ def main():
     ships = [2, 3, 3, 4, 5]
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
-    print("Board size: 6x6. Numb of ships: 5.")
+    print("Board size: 6x6. Number of ships: 5.")
     print("Size of ships vary from 2-5 spaces.")
     print("Top left corner is row 0, col 0\n")
     print("========================================\n")
