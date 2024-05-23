@@ -12,7 +12,7 @@ class Board:
         self.num_ships = num_ships
         self.user_name = user_name
         self.board = [['~' for _ in range(size)] for _ in range(size)]
-        self.guesses = []
+        self.guesses = set()
         self.ships = []
 
     def create_battlefield(self, reveal_ships=False):
@@ -148,6 +148,8 @@ def main():
         player_board.place_ship(ship_length)
         computer_board.place_ship(ship_length)
 
+    computer_shots = set()    
+
     #Main playing loop
     while True:
         # Print player's battlefield
@@ -162,5 +164,11 @@ def main():
         row, col = player_shot(size)
         result = computer_board.handle_shot(row, col)
         print(result)
+
+        # Computer's turn
+        row, col = get_computer_shot(size, computer_shots)
+        result = player_board.handle_shot(row, col)
+        print(f"Computer shot at ({row}, {col}) and {result}\n")
+        print("========================================\n")
 
 main()
