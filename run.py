@@ -23,7 +23,7 @@ class Board:
         Hiding computers ships from the other player with the reveal_ships.
         """
         for row in self.board:
-            print(" ".join(['S' if cell == 'S' and reveal_ships else cell for cell in row]))
+            print(" ".join(['S' if cell == 'S' and reveal_ships else '~' if cell == 'S' else cell for cell in row]))
         print()
 
     def place_ship(self):
@@ -104,7 +104,7 @@ class Battleship:
                         print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
                 except ValueError:
                     print("Invalid input. Please enter valid numbers.")
-                    return self.get_player_shot()
+                    return self.get_player_shot(size)
 
 
     def get_computer_shot(self, size, previous_shots):
@@ -199,5 +199,6 @@ def main():
             break
 
         print("========================================\n")
+
 
 main()
