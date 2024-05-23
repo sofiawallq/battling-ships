@@ -31,8 +31,7 @@ class Board:
         Function for placing ships on the board.
         """
         for length in ships:
-            placed = False
-            while not placed:
+            while True:
                 orientation = random.choice(['H', 'V'])
                 row = random.randint(0, self.size - 1)
                 col = random.randint(0, self.size - 1)
@@ -84,7 +83,7 @@ class Battleship:
     This class contains functions for handling both players shots.
     It also contains the function for getting a username from the player.
     """
-    def get_player_shot(size):
+    def get_player_shot(self, size):
             """
             Get the player's shot and validate the input from the player.
             If input is invalid it loops to ask for new input from player.
@@ -102,7 +101,7 @@ class Battleship:
                     return self.player_shot()
 
 
-    def get_computer_shot(size, previous_shots):
+    def get_computer_shot(self, size, previous_shots):
         """
         Generate a random shot for the computer.
         Learned about randint from the Project Portfolio Scope.
@@ -115,7 +114,7 @@ class Battleship:
                 return row, col                 
 
 
-    def get_username():
+    def get_username(self):
         """
         Function for getting players name and thus creating a username.
         Contains validation for correct input.
@@ -136,13 +135,14 @@ def main():
     size = 6
     player_score = 0
     computer_score = 0
+    battleship = Battelship()
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
     print("Board size: 6x6. Number of ships: 5.")
     print("Size of ships vary from 2-5 spaces.")
     print("Top left corner is row 0, col 0\n")
     print("========================================\n")
-    user_name = Battleship.get_username()
+    user_name = battleship.get_username()
     print("========================================\n")
 
     # Create battlefields for player and computer
@@ -150,9 +150,8 @@ def main():
     computer_board = Board(size)
 
     # Place ships for the player and computer
-    for ship_length in ships:
-        player_board.place_ship(ship_length)
-        computer_board.place_ship(ship_length)
+    player_board.place_ship()
+    computer_board.place_ship()
 
     computer_shots = set()    
 
