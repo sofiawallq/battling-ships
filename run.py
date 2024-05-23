@@ -77,6 +77,12 @@ class Board:
             self.board[row][col] = 'X'
             return "That was a miss."
 
+    def sunk_all_ships(self):
+        """
+        Check if all ships have benn hit
+        """
+        return ln(self_ships) == 0
+
 
 class Battleship:
     """
@@ -98,7 +104,7 @@ class Battleship:
                         print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
                 except ValueError:
                     print("Invalid input. Please enter valid numbers.")
-                    return self.player_shot()
+                    return self.get_player_shot()
 
 
     def get_computer_shot(self, size, previous_shots):
@@ -166,10 +172,10 @@ def main():
         computer_board.print_board(reveal_ships=False)
 
         # Players turn
-        print("Take a shot at your opponents battlefield:")
-        row, col = battleship.get_player_shot(size)
+        print("Take a shot at your opponent's battlefield:")
+        row, col = player_shot(size)
         result = computer_board.handle_shot(row, col)
-        print(result)
+        print(f"Player guessed: {result}")
 
         if result == "That was a hit!":
             player_score +=1
@@ -191,6 +197,5 @@ def main():
         cont = input("Press any key to continue, or 'q' to quit")
         if cont == 'q':
             break
-
 
 main()
