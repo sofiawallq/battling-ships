@@ -79,9 +79,9 @@ class Board:
 
     def sunk_all_ships(self):
         """
-        Check if all ships have benn hit
+        Check if all ships have been hit
         """
-        return ln(self_ships) == 0
+        return len(self_ships) == 0
 
 
 class Battleship:
@@ -173,9 +173,9 @@ def main():
 
         # Players turn
         print("Take a shot at your opponent's battlefield:")
-        row, col = player_shot(size)
+        row, col = battleship.get_player_shot(size)
         result = computer_board.handle_shot(row, col)
-        print(f"Player guessed: {result}")
+        print(f"Player guessed ({row}, {col}) and {result}")
 
         if result == "That was a hit!":
             player_score +=1
