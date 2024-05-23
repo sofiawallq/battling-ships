@@ -3,8 +3,8 @@ from random import randrange
 
 class Board:
     """
-    Main board. Creates both players battlefield according to given size,
-    placing ships on the boards and handling shots.
+    Main game board. Creates both players battlefield according to given size,
+    placing ships on the boards and handling shots for both player and computer.
     __init__ function created with the help of Project 3 Portfolio Scope.
     """
     def __init__(self, size, num_ships=None, user_name=None):
@@ -78,6 +78,10 @@ class Board:
 
 
 class Battleship:
+    """
+    This class contains functions for handling both players shots.
+    It also contains the function for getting a username.
+    """
     def get_player_shot(size):
             """
             Get the player's shot and validate the input from the player.
