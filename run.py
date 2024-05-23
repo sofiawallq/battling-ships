@@ -81,7 +81,8 @@ class Board:
             self.board[row][col] = 'X'
             return "That was a miss."
 
-    def player_shot(size):
+
+def player_shot(size):
         """
         Get the player's shot and validate the input from the player.
         """
@@ -96,17 +97,18 @@ class Board:
             except ValueError:
                 print("Invalid input. Please enter valid numbers.")
 
-    def get_computer_shot(size, previous_shots):
-        """
-        Generate a random shot for the computer.
-        Learned about randint from the Project Porfolio Scope.
-        """
-        while True:
-            row = random.randint(0, size - 1)
-            col = random.randint(0, size - 1)
-            if (row, col) not in previous_shots:
-                previous_shots.add((row, col))
-                return row, col             
+
+def get_computer_shot(size, previous_shots):
+    """
+    Generate a random shot for the computer.
+    Learned about randint from the Project Porfolio Scope.
+    """
+    while True:
+        row = random.randint(0, size - 1)
+        col = random.randint(0, size - 1)
+        if (row, col) not in previous_shots:
+            previous_shots.add((row, col))
+            return row, col                 
 
 
 def get_username():
