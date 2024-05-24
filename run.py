@@ -82,7 +82,7 @@ class Board:
         """
         Check if all ships have been hit.
         """
-        return len(self_ships) == 0
+        return len(self.ships) == 0
 
 
 class Battleship:
@@ -185,7 +185,7 @@ def new_game():
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
-            player_score +=1    
+            computer_score +=1    
 
         #Print scores after each round
         print("After this round, the scores are:")
