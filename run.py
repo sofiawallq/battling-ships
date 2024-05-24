@@ -183,7 +183,7 @@ def new_game():
         print("Take a shot at your opponent's battlefield:")
         while True:
             row, col = player_board.get_player_shot(size, player_shots)
-            result = computer_board.handle_shot(row, col)
+            result = computer_board.handle_shot(row, col, size, player_shots)
             print(f"Player guessed ({row}, {col}) and {result}")
             if result != "Oh, you've already shot here! Please try again":
                 if result == "That was a hit!":
@@ -201,7 +201,7 @@ def new_game():
 
         # Computer's turn
         row, col = computer_board.get_computer_shot(size, computer_shots)
-        result = player_board.handle_shot(row, col)
+        result = player_board.handle_shot(row, col, size, computer_shots)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
             computer_score += 1  
