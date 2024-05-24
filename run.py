@@ -16,6 +16,7 @@ class Board:
         self.board = [['~' for _ in range(size)] for _ in range(size)]
         self.guesses = set()
         self.ships = set()
+        self.ships_hit = set()
 
     def print_board(self, reveal_ships=False):
         """
@@ -68,12 +69,16 @@ class Board:
         Handle a shot at the given position and return whether it was a hit or miss.
         """
         if (row, col) in self.guesses:
-            return "Oh, you've already shot here!"
+            return "Oh, you've already shot here! Please try again."
         self.guesses.add((row, col))
+
         if (row, col) in self.ships:
             self.board[row][col] = '*'
             self.ships.remove((row, col))
+            self.ships_hit.add((row, col))
             return "That was a hit!"
+        elif (row, col) in self.ships_hit:
+            return "Oh, you've already shot here! Please try again" 
         else:
             self.board[row][col] = 'X'
             return "That was a miss."
@@ -90,7 +95,7 @@ class Battleship:
     This class contains functions for handling both players shots.
     It also contains the function for getting a username from the player.
     """
-    def get_player_shot(self, size):
+    def get_player_shot(self, size, player_shots):
             """
             Get the player's shot and validate the input from the player.
             If input is invalid it loops to ask for new input from player.
@@ -106,7 +111,6 @@ class Battleship:
                 except ValueError:
                     print("Invalid input. Please enter valid numbers.")
                     return self.get_player_shot(size)
-
 
     def get_computer_shot(self, size, previous_shots):
         """
@@ -161,7 +165,8 @@ def new_game():
     player_board.place_ship()
     computer_board.place_ship()
 
-    computer_shots = set()    
+    computer_shots = set() 
+    player_shots = set()   
 
     #Main playing loop
     while True:
@@ -174,18 +179,20 @@ def new_game():
 
         # Players turn
         print("Take a shot at your opponent's battlefield:")
-        row, col = battleship.get_player_shot(size)
-        result = computer_board.handle_shot(row, col)
-        print(f"Player guessed ({row}, {col}) and {result}")
-        if result == "That was a hit!":
-            player_score +=1
+        while True:
+            row, col = battleship.get_player_shot(size, player_shots)
+            result = computer_board.handle_shot(row, col)
+            print(f"Player guessed ({row}, {col}) and {result}")
+            if result != "Oh, you've already shot here! Please try again":
+                if result == "That was a hit!":
+                    player_score +=1
 
         # Computers turn
         row, col = battleship.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
-            computer_score +=1    
+            computer_score +=1  
 
         #Print scores after each round
         print("After this round, the scores are:")
@@ -197,21 +204,19 @@ def new_game():
             print("Thanks for playing!\n")
             break
 
-
         """
         Check if all ships are hit and announce the winner.
-        sum() adds up the lenght of all the ships to see who reaches it first - which in this case is 17.
+        sum() adds up the lenght of all the ships to see who reaches it first 
+        - which in this case is 17.
         """
         if player_score == sum(lenght for lenght in ships) or computer_score == sum(lenght for lenght in ships):
+            if player_score > computer_score:
+                print(f"Congratulations {user_name}, you sunk all your opponents ships!")
+            else:
+                print(f"Oh no the computer won! Better luck next time.")
+                
+            print(f"Final score: Player {player_score}, Computer {computer_score}")    
+            print("========================================\n")
             break
-            
-        if player_score > computer_score:
-            print(f"Congratulations {user_name}, you sunk all your opponents ships!")
-        else:
-            print(f"Oh no the computer won! Better luck next time.")
-            
-        print(f"Final score: Player {player_score}, Computer {computer_score}")    
-        print("========================================\n")
-        break
 
 new_game()
