@@ -194,6 +194,7 @@ def new_game():
         sum() adds up the length of all the ships to see who reaches it first,
         which in this case is 17."""
         if player_score == total_ship_cells:
+            print("========================================\n")
             print(f"Congratulations {user_name}, you sunk all your opponents ships!")
             print(f"Final score: Player {player_score}, Computer {computer_score}")
             print("========================================\n")
@@ -208,6 +209,7 @@ def new_game():
 
         #Check if computer hit all ships and if so print winner-message
         if computer_score == total_ship_cells:
+            print("========================================\n")
             print(f"Oh no the computer won! Better luck next time.")
             print(f"Final score: Player {player_score}, Computer {computer_score}\n")    
             print("========================================\n")
