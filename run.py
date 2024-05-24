@@ -112,8 +112,7 @@ class Board:
                 else:
                     print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
             except ValueError:
-                print("Invalid input. Please enter valid numbers.")
-                return self.get_player_shot(size)    
+                print("Invalid input. Please enter valid numbers.")   
 
     def get_computer_shot(self, size, previous_shots):
         """
