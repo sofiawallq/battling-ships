@@ -205,14 +205,13 @@ def new_game():
         if player score == sum(len for len in ships) or computer_score == sum(len for len in ships):
             break
             
-        if player_score > computer_score:
-            print(f"Congratulations {user_name}!, You sunk all your opponents ships!")
-        else:
-            print(f"Oh no the computer won! Better luck next time.")
-            print(f"Final score: Player {player_score}, Computer {computer_score}")    
+    if player_score > computer_score:
+        print(f"Congratulations {user_name}!, You sunk all your opponents ships!")
+    else:
+        print(f"Oh no the computer won! Better luck next time.")
+        print(f"Final score: Player {player_score}, Computer {computer_score}")    
         
-        print("========================================\n")
+    print("========================================\n")
 
-    
 
 new_game()
