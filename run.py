@@ -180,20 +180,12 @@ def new_game():
         if result == "That was a hit!":
             player_score +=1
 
-        # Check if all ships are hit
-        if not computer_board.ships:
-            print("Congratulations! You sunk all your opponents ships!")
-            print(f"Final score: Player {player_score}, Computer {computer_score}")
-            break
-    
         # Computers turn
         row, col = battleship.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
-            player_score +=1
-
-        print("========================================\n")
+            player_score +=1    
 
         #Print scores after each round
         print("After this round, the scores are:")
@@ -206,5 +198,21 @@ def new_game():
 
         print("========================================\n")
 
+        """
+        Check if all ships are hit and announce the winner.
+        sum() adds up the lenght of all the ships, which in this case is 17.
+        """
+        if player score == sum(len for len in ships) or computer_score == sum(len for len in ships):
+            break
+            
+        if player_score > computer_score:
+            print(f"Congratulations {user_name}!, You sunk all your opponents ships!")
+        else:
+            print(f"Oh no the computer won! Better luck next time.")
+            print(f"Final score: Player {player_score}, Computer {computer_score}")    
+        
+        print("========================================\n")
+
+    
 
 new_game()
