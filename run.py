@@ -62,24 +62,24 @@ class Board:
                     return False
             if orientation == 'H' and self.board[row][col + i] != '~':
                     return False
-        return True
+        return True   
 
     def shot_already_taken(self, row, col):
         """
         Check if a shot has already been made by the player at the given coordinates.
         """
-        return (row, col) in self.guesses    
+        return (row, col) in self.guesses  
     
-    def handle_shot(self, row, col):
+    def handle_shot(self, row, col, size, player_shots):
         """
         Handle a shot at the given position and return whether it was a hit or miss.
         """
         while True:
-            if self.is_shot_already_taken(row, col):
+            if self.shot_already_taken(row, col):
                 print("Oh, you've already shot here! Please try again.")
-                row, col = battleship.get_player_shot(size, player_shots)
+                row, col = self.get_player_shot(size, player_shots)
             else:
-                break
+                break       
 
         self.guesses.add((row, col))
 
@@ -98,28 +98,22 @@ class Board:
         """
         return len(self.ships) == 0
 
-
-class Battleship:
-    """
-    This class contains functions for handling both players shots.
-    It also contains the function for getting a username from the player.
-    """
     def get_player_shot(self, size, player_shots):
+        """
+        Get the player's shot and validate the input from the player.
+        If input is invalid it loops to ask for new input from player.
             """
-            Get the player's shot and validate the input from the player.
-            If input is invalid it loops to ask for new input from player.
-            """
-            while True:
-                try:
-                    row = int(input(f"Guess a row (0 to {size - 1}): "))
-                    col = int(input(f"Guess a column (0 to {size - 1}): "))
-                    if 0 <= row < size and 0 <= col < size:
-                        return row, col
-                    else:
-                        print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
-                except ValueError:
-                    print("Invalid input. Please enter valid numbers.")
-                    return self.get_player_shot(size)
+        while True:
+            try:
+                row = int(input(f"Guess a row (0 to {size - 1}): "))
+                col = int(input(f"Guess a column (0 to {size - 1}): "))
+                if 0 <= row < size and 0 <= col < size:
+                    return row, col
+                else:
+                    print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
+            except ValueError:
+                print("Invalid input. Please enter valid numbers.")
+                return self.get_player_shot(size)    
 
     def get_computer_shot(self, size, previous_shots):
         """
@@ -134,21 +128,21 @@ class Battleship:
                 return row, col            
 
 
-    def get_username(self):
-        """
-        Function for getting players name and thus creating a username.
-        Contains validation for correct input.
-        """
-        print("Let's start by adding a username")
-        print("Username must be one word, letters only.")
-        while True:
-            user_name = input("Please enter your name here: \n")
-            print()
-            if user_name.isalpha():
-                print(f"Hello and welcome {user_name}, now let the battle begin!\n")
-                return user_name
-            else:
-                print("Oops, not a valid username. Please enter your name again.")
+def get_username():
+    """
+    Function for getting players name and thus creating a username.
+    Contains validation for correct input.
+    """
+    print("Let's start by adding a username")
+    print("Username must be one word, letters only.")
+    while True:
+        user_name = input("Please enter your name here: \n")
+        print()
+        if user_name.isalpha():
+            print(f"Hello and welcome {user_name}, now let the battle begin!\n")
+            return user_name
+        else:
+            print("Oops, not a valid username. Please enter your name again.")
 
 
 def new_game():
@@ -156,14 +150,13 @@ def new_game():
     num_ships = 5
     player_score = 0
     computer_score = 0
-    battleship = Battleship()
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
     print("Board size: 6x6. Number of ships: 5.")
     print("Size of ships vary from 2-5 spaces.")
     print("Top left corner is row 0, col 0\n")
     print("========================================\n")
-    user_name = battleship.get_username()
+    user_name = get_username()
     print("========================================\n")
 
     # Create battlefields for player and computer
@@ -177,7 +170,7 @@ def new_game():
     computer_shots = set() 
     player_shots = set()   
 
-    #Main playing loop
+    # Main playing loop
     while True:
         # Print player's battlefield
         print(f"{user_name}'s battlefield:")
@@ -186,32 +179,32 @@ def new_game():
         print("Computer's battlefield:")
         computer_board.print_board(reveal_ships=False)
 
-        # Players turn
+        # Player's turn
         print("Take a shot at your opponent's battlefield:")
         while True:
-            row, col = battleship.get_player_shot(size, player_shots)
+            row, col = player_board.get_player_shot(size, player_shots)
             result = computer_board.handle_shot(row, col)
             print(f"Player guessed ({row}, {col}) and {result}")
             if result != "Oh, you've already shot here! Please try again":
                 if result == "That was a hit!":
-                    player_score +=1
-                break    
-        
+                    player_score += 1
+                break
+
         """Check if player hit all ships and if so print winner-message.
-        sum() adds up the lenght of all the ships to see who reaches it first, 
+        sum() adds up the length of all the ships to see who reaches it first,
         which in this case is 17."""
-        if player_score == sum(lenght for lenght in ships):
+        if player_score == sum(length for length in ships):
             print(f"Congratulations {user_name}, you sunk all your opponents ships!")
-            print(f"Final score: Player {player_score}, Computer {computer_score}")    
+            print(f"Final score: Player {player_score}, Computer {computer_score}")
             print("========================================\n")
             break
 
-        # Computers turn
-        row, col = battleship.get_computer_shot(size, computer_shots)
+        # Computer's turn
+        row, col = computer_board.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
-            computer_score +=1  
+            computer_score += 1  
 
         #Check if computer hit all ships and if so print winner-message
         if computer_score == sum(lenght for lenght in ships):
