@@ -28,11 +28,12 @@ class Board:
 
     def place_ship(self):
         """
-        Function for placing ships on the board.
+        Function for placing ships on the board. Randomly for each new game.
         """
         for length in ships:
             while True:
                 orientation = random.choice(['H', 'V'])
+                # H represents horizontal, V represents vertical placement of ships
                 row = random.randint(0, self.size - 1)
                 col = random.randint(0, self.size - 1)
                 if self.valid_ship_position(row, col, length, orientation):
@@ -79,7 +80,7 @@ class Board:
 
     def sunk_all_ships(self):
         """
-        Check if all ships have been hit
+        Check if all ships have been hit.
         """
         return len(self_ships) == 0
 
@@ -117,7 +118,7 @@ class Battleship:
             col = random.randint(0, size - 1)
             if (row, col) not in previous_shots:
                 previous_shots.add((row, col))
-                return row, col                 
+                return row, col            
 
 
     def get_username(self):
@@ -137,7 +138,7 @@ class Battleship:
                 print("Oops, not a valid username. Please enter your name again.")
 
 
-def main():
+def new_game():
     size = 6
     num_ships = 5
     player_score = 0
@@ -180,6 +181,12 @@ def main():
         if result == "That was a hit!":
             player_score +=1
 
+        # Check if all ships are hit
+        if not computer_board.ships:
+            print("Congratulations! You sunk all your opponents ships!")
+            print(f"Final score: Player {player_score}, Computer {computer_score}")
+            break
+    
         # Computers turn
         row, col = battleship.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
@@ -196,9 +203,10 @@ def main():
         print(f"Computer: {computer_score}")
         cont = input("Press 'Enter' to continue, or 'q' to quit\n")
         if cont == 'q':
+            print("Thanks for playing!\n")
             break
 
         print("========================================\n")
 
 
-main()
+new_game()
