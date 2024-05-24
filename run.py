@@ -177,7 +177,6 @@ def new_game():
         row, col = battleship.get_player_shot(size)
         result = computer_board.handle_shot(row, col)
         print(f"Player guessed ({row}, {col}) and {result}")
-
         if result == "That was a hit!":
             player_score +=1
 
@@ -191,7 +190,6 @@ def new_game():
         row, col = battleship.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
-
         if result == "That was a hit!":
             player_score +=1
 
