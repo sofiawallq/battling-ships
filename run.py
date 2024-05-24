@@ -202,7 +202,7 @@ def new_game():
         Check if all ships are hit and announce the winner.
         sum() adds up the lenght of all the ships, which in this case is 17.
         """
-        if player score == sum(len for len in ships) or computer_score == sum(len for len in ships):
+        if player_score == sum(len for len in ships) or computer_score == sum(len for len in ships):
             break
             
     if player_score > computer_score:
