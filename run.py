@@ -98,7 +98,7 @@ class Battleship:
             while True:
                 try:
                     row = int(input(f"Guess a row (0 to {size - 1}): "))
-                    col = int(input(f"Guess a column (0 to {size - 1}):"))
+                    col = int(input(f"Guess a column (0 to {size - 1}): "))
                     if 0 <= row < size and 0 <= col < size:
                         return row, col
                     else:
@@ -206,12 +206,12 @@ def new_game():
             break
             
         if player_score > computer_score:
-            print(f"Congratulations {user_name}!, you sunk all your opponents ships!")
+            print(f"Congratulations {user_name}, you sunk all your opponents ships!")
         else:
             print(f"Oh no the computer won! Better luck next time.")
             
         print(f"Final score: Player {player_score}, Computer {computer_score}")    
         print("========================================\n")
-
+        break
 
 new_game()
