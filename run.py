@@ -63,13 +63,24 @@ class Board:
             if orientation == 'H' and self.board[row][col + i] != '~':
                     return False
         return True
+
+    def shot_already_taken(self, row, col):
+        """
+        Check if a shot has already been made by the player at the given coordinates.
+        """
+        return (row, col) in self.guesses    
     
     def handle_shot(self, row, col):
         """
         Handle a shot at the given position and return whether it was a hit or miss.
         """
-        if (row, col) in self.guesses:
-            return "Oh, you've already shot here! Please try again."
+        while True:
+            if self.is_shot_already_taken(row, col):
+                print("Oh, you've already shot here! Please try again.")
+                row, col = battleship.get_player_shot(size, player_shots)
+            else:
+                break
+
         self.guesses.add((row, col))
 
         if (row, col) in self.ships:
@@ -77,11 +88,9 @@ class Board:
             self.ships.remove((row, col))
             self.ships_hit.add((row, col))
             return "That was a hit!"
-        elif (row, col) in self.ships_hit:
-            return "Oh, you've already shot here! Please try again" 
         else:
             self.board[row][col] = 'X'
-            return "That was a miss."
+            return "That was a miss."      
 
     def sunk_all_ships(self):
         """
