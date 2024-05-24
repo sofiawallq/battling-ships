@@ -149,6 +149,7 @@ def new_game():
     num_ships = 5
     player_score = 0
     computer_score = 0
+    total_ship_cells = sum(ships)
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
     print("Board size: 6x6. Number of ships: 5.")
@@ -192,7 +193,7 @@ def new_game():
         """Check if player hit all ships and if so print winner-message.
         sum() adds up the length of all the ships to see who reaches it first,
         which in this case is 17."""
-        if player_score == sum(length for length in ships):
+        if player_score == total_ship_cells:
             print(f"Congratulations {user_name}, you sunk all your opponents ships!")
             print(f"Final score: Player {player_score}, Computer {computer_score}")
             print("========================================\n")
@@ -206,9 +207,9 @@ def new_game():
             computer_score += 1  
 
         #Check if computer hit all ships and if so print winner-message
-        if computer_score == sum(lenght for lenght in ships):
+        if computer_score == total_ship_cells:
             print(f"Oh no the computer won! Better luck next time.")
-            print(f"Final score: Player {player_score}, Computer {computer_score}")    
+            print(f"Final score: Player {player_score}, Computer {computer_score}\n")    
             print("========================================\n")
             break
 
