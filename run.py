@@ -98,7 +98,7 @@ class Battleship:
             while True:
                 try:
                     row = int(input(f"Guess a row (0 to {size - 1}): "))
-                    col = int(input(f"Guess a column (0 to {size - 1}): "))
+                    col = int(input(f"Guess a column (0 to {size - 1}):"))
                     if 0 <= row < size and 0 <= col < size:
                         return row, col
                     else:
@@ -132,7 +132,7 @@ class Battleship:
             user_name = input("Please enter your name here: \n")
             print()
             if user_name.isalpha():
-                print(f"Hello and welcome {user_name}, let the battle begin!\n")
+                print(f"Hello and welcome {user_name}, now let the battle begin!\n")
                 return user_name
             else:
                 print("Oops, not a valid username. Please enter your name again.")
@@ -190,28 +190,28 @@ def new_game():
         #Print scores after each round
         print("After this round, the scores are:")
         print(f"{user_name}: {player_score}")
-        print(f"Computer: {computer_score}")
+        print(f"Computer: {computer_score}\n")
         cont = input("Press 'Enter' to continue, or 'q' to quit\n")
         if cont == 'q':
+            print("========================================\n")
             print("Thanks for playing!\n")
             break
 
-        print("========================================\n")
 
         """
         Check if all ships are hit and announce the winner.
-        sum() adds up the lenght of all the ships, which in this case is 17.
+        sum() adds up the lenght of all the ships to see who reaches it first - which in this case is 17.
         """
-        if player_score == sum(len for len in ships) or computer_score == sum(len for len in ships):
+        if player_score == sum(lenght for lenght in ships) or computer_score == sum(lenght for lenght in ships):
             break
             
-    if player_score > computer_score:
-        print(f"Congratulations {user_name}!, You sunk all your opponents ships!")
-    else:
-        print(f"Oh no the computer won! Better luck next time.")
+        if player_score > computer_score:
+            print(f"Congratulations {user_name}!, you sunk all your opponents ships!")
+        else:
+            print(f"Oh no the computer won! Better luck next time.")
+            
         print(f"Final score: Player {player_score}, Computer {computer_score}")    
-        
-    print("========================================\n")
+        print("========================================\n")
 
 
 new_game()
