@@ -1,23 +1,23 @@
 # The great battle of the ships!
-This game is based on the classic Battleship game, created using Python and runs in the Code Institute mock terminal on Heroku.
+This game is based on the classic Battleship game, this time created using Python and runs in the Code Institute mock terminal on Heroku.
 
-The players goal is to find all of the opponents battleships before they find theirs.
+The players goal is to find and sink all of the opponents battleships before they find theirs. The opponent in this case is the computer. 
 
 ## How to play
 
-The game begins with an itroduction of the faktorer man har att göra med.
+The game begins with a short introduction containing the games conditions regarding board size, number of ships and lenght of the ships. 
 
-The player then enters a username and two game boards are then generated at random.
+The player then enters a username and two game boards are generated at random.
 
-The player can only see the ships on their board, marked with an "S".
+The player can only see the ships on their own board, marked with an "S". The computers ships remain hidden. 
 
 There are five ships of various sizes that the player needs to locate in order to win. 
 
-The player will then be asked to guess on the location of the opponents ships via cooordinates on the board and gets a response in form of a hit or miss.
+The player will then be asked to guess on the location of the opponents ships via cooordinates on the board, and gets a response in form of a hit or miss.
 
 Hits are marked on the board with an "*", miss with a "X".
 
-The player and the computer takes turn in guessing the locations of the opponents ships until one of them finds and sinks them all. 
+The player and the computer take turn in guessing the location of the opponents ships until one of them finds and sinks them all. 
 
 ## Features
 
@@ -25,11 +25,25 @@ The player and the computer takes turn in guessing the locations of the opponent
 
 ### Existing features
 
-Input from the user
+* Direct input from "the game" when the user starts, providing some useful information.
 
-Places ships randomly on both players boards
+* After that the user is asked for input in the form of a username that will appear throughout the game.
+A return message in the form of "Oops, not a valid username. Please enter your name again."appears until the player provide us with a valid username - which in this case is one word, letters only. If the user inputs a number, a symbol or more than one word the program will continue ask for a valid one.
 
-Ability to hide the Computers board from the other player
+* After a correct username is provided a welcome message is returned to the player. The program then print two boards to the game area, paired with a function to randomly place ships on both players boards.
+
+* The ability to hide the Computers board from the other player.
+
+* At each new turn the player is asked to input coordinates in a given a row and a column from the provided board size - if the player makes the same guess twice the get a returning message asking for a new guess, until they provide new coordinates. 
+
+* After the player has made their guess the computer gets a shot whch is made randomly, but checks if the coordinates have been hit before and in that case randomly chose another spot to shot at. 
+
+* A function to check after each shot if its a hit or miss, and return a respons to the player.
+
+* A score tracking system that adds a point to the players when they hit the opponents ship.
+
+* 
+
 
 ### Features left to implement
 * The ability for the player to position their own ships.
