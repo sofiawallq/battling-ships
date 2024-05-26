@@ -32,30 +32,39 @@ A return message in the form of "Oops, not a valid username. Please enter your n
 
 * After a correct username is provided a welcome message is returned to the player. The program then print two boards to the game area, paired with a function to randomly place ships on both players boards.
 
-* The ability to hide the Computers board from the other player.
+* There is alson a function for hiding the Computers ships on the board from the other player.
 
-* At each new turn the player is asked to input coordinates in a given a row and a column from the provided board size - if the player makes the same guess twice the get a returning message asking for a new guess, until they provide new coordinates. 
+* At each new turn the player is asked to input coordinates in a given a row and a column from the provided board size - if the player makes the same guess twice they get a returning message asking for a new guess, until they provide new coordinates. 
 
 * After the player has made their guess the computer gets a shot whch is made randomly, but checks if the coordinates have been hit before and in that case randomly chose another spot to shot at. 
 
-* A function to check after each shot if its a hit or miss, and return a respons to the player.
+* A function to check after each shot if its a hit or miss, and return a respone to the player.
 
 * A score tracking system that adds a point to the players when they hit the opponents ship.
 
-* 
+* After each round the player gets a response about the current score, and are then aksed to either press "Enter" to continue playing, or "q" to quit. If the choose to quit the get a "Thanks for playing!"
+
+* The game continues until one player sinks all the opponents ships. There is a function to check after each round if either the player or the computer has reached the total number of ship cells given in order to win - and if the player wins they get at printed message with a congratulations along with the final score. If the player loose they get a "Better luck next time" along with the final score.
 
 
 ### Features left to implement
-* The ability for the player to position their own ships.
-* The option to choose your own board size and the number of ships.  
+
+* The possibility for the player to position their own ships would be a nice feature, just like when you play the game in real life.
+
+* The option to choose your own board size and the number of ships woud also be a fun feature.  
+
 
 ## Data model eg class
 
+For this project i used the class "Board" for my main functions. I had two classes at one point to keep the features apart, but that only made the programming more complex since the functions I'm using all work together it proved easier to keep most of them in the same class. 
+
+
 ## Testing
 
-Manually tested the program by doing the following:
-* Given invalid input on every place possible - letters instead of numbers, guesses outside of the board size, provided the same guess twice.
-* Continuosly testing the run.py in my local terminal and then on the Code Institute Heroku mock terminal.
+I manually tested the program by doing the following:
+* Gave invalid input on every place possible - letters instead of numbers, guesses outside of the board size, provided the same guess twice and so on.
+
+* Continuosly tested the run.py in my local terminal and then on the Code Institute Heroku mock terminal.
 
 ## Validator testing
 I ran the PEP8 Python Validator a few times through out the coding process and fixed the errors as they occured, so that I would not have an enormous list to fix in the end.
