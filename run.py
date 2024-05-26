@@ -3,10 +3,12 @@ from random import randrange
 
 ships = [2, 3, 3, 4, 5]
 
+
 class Board:
     """
     Main game board. Creates both players battlefield according to given size,
-    placing ships on the boards and handling shots for both player and computer.
+    placing ships on the boards and handling shots for both
+    the player and the computer.
     __init__ function created with the help of Project 3 Portfolio Scope.
     """
     def __init__(self, size, num_ships=None, user_name=None):
@@ -34,7 +36,7 @@ class Board:
         for length in ships:
             while True:
                 orientation = random.choice(['H', 'V'])
-                # H represents horizontal, V represents vertical placement of ships
+                # H represents horizontal, V repr. vertical placement of ships
                 row = random.randint(0, self.size - 1)
                 col = random.randint(0, self.size - 1)
                 if self.valid_ship_position(row, col, length, orientation):
@@ -45,7 +47,7 @@ class Board:
                         else:  # orientation == 'V'
                             self.board[row + i][col] = 'S'
                             self.ships.add((row + i, col))
-                    break   
+                    break 
 
     def valid_ship_position(self, row, col, length, orientation):
         """
@@ -59,27 +61,29 @@ class Board:
 
         for i in range(length):
             if orientation == 'H' and self.board[row][col + i] != '~':
-                    return False
+                return False
             if orientation == 'H' and self.board[row][col + i] != '~':
-                    return False
-        return True   
+                return False
+        return True
 
     def shot_already_taken(self, row, col):
         """
-        Check if a shot has already been made by the player at the given coordinates.
+        Check if a shot has already been made by the player
+        at the given coordinates.
         """
-        return (row, col) in self.guesses  
-    
+        return (row, col) in self.guesses
+
     def handle_shot(self, row, col, size, player_shots):
         """
-        Handle a shot at the given position and return whether it was a hit or miss.
+        Handle a shot at the given position
+        and return whether it was a hit or miss.
         """
         while True:
             if self.shot_already_taken(row, col):
                 print("Oh, you've already shot here! Please try again.")
                 row, col = self.get_player_shot(size, player_shots)
             else:
-                break       
+                break
 
         self.guesses.add((row, col))
 
@@ -90,7 +94,7 @@ class Board:
             return "That was a hit!"
         else:
             self.board[row][col] = 'X'
-            return "That was a miss."      
+            return "That was a miss."
 
     def sunk_all_ships(self):
         """
@@ -112,7 +116,7 @@ class Board:
                 else:
                     print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
             except ValueError:
-                print("Invalid input. Please enter valid numbers.")   
+                print("Invalid input. Please enter valid numbers.")
 
     def get_computer_shot(self, size, previous_shots):
         """
@@ -124,7 +128,7 @@ class Board:
             col = random.randint(0, size - 1)
             if (row, col) not in previous_shots:
                 previous_shots.add((row, col))
-                return row, col            
+                return row, col
 
 
 def get_username():
@@ -138,7 +142,7 @@ def get_username():
         user_name = input("Please enter your name here: \n")
         print()
         if user_name.isalpha():
-            print(f"Hello and welcome {user_name}, now let the battle begin!\n")
+            print(f"Hello and welcome {user_name} - let the battle begin!\n")
             return user_name
         else:
             print("Oops, not a valid username. Please enter your name again.")
@@ -167,8 +171,8 @@ def new_game():
     player_board.place_ship()
     computer_board.place_ship()
 
-    computer_shots = set() 
-    player_shots = set()   
+    computer_shots = set()
+    player_shots = set()
 
     # Main playing loop
     while True:
@@ -205,17 +209,17 @@ def new_game():
         result = player_board.handle_shot(row, col, size, computer_shots)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
-            computer_score += 1  
+            computer_score += 1
 
-        #Check if computer hit all ships and if so print winner-message
+        # Check if computer hit all ships and if so print winner-message
         if computer_score == total_ship_cells:
             print("========================================\n")
             print(f"Oh no the computer won! Better luck next time.")
-            print(f"Final score: Player {player_score}, Computer {computer_score}\n")    
+            print(f"Final score: Player {player_score}, Computer {computer_score}\n")
             print("========================================\n")
             break
 
-        #Print scores after each round
+        # Print scores after each round
         print("After this round, the scores are:")
         print(f"{user_name}: {player_score}")
         print(f"Computer: {computer_score}\n")
@@ -224,6 +228,6 @@ def new_game():
             print("========================================\n")
             print("Thanks for playing!\n")
             break
-                        
+               
 
 new_game()
