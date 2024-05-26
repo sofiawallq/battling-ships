@@ -128,9 +128,14 @@ The link to the mock terminal can be found here -
 
 ### Content
 
-Function for
+* The use of the "try and except" command used for some invalid input I took from the Love Sandwiches code along, as well as some wisdom on how to structure the code.
 
-Init section for board class project scope
+* For the init-function at the top of the code I took some help from the [Project Portfolio Scope Video]() along with the logic around the Board-class.
 
+* Some help with the Python built-in functions i got from the [Python library](https://docs.python.org/3/library/functions.html)
+
+* Watching this [Youtube Tutorial](https://www.youtube.com/watch?v=alJH_c9t4zw) by Knowledge Mavens about creating an object oriented Battleship game helped me simplify my code a bit and mainly helped me with understanding what functions I needed to provide in order for the game to run. 
+
+* As mentioned above, I hit the different forums for solutions to my problems. As usual Stack Overflow provided me with some good answers, [this page](https://stackoverflow.com/questions/77575338/battleship-project-with-python) in particular helped me alot. 
 
 
