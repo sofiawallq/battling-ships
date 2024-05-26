@@ -26,7 +26,12 @@ class Board:
         Hiding computers ships from the other player with the reveal_ships.
         """
         for row in self.board:
-            print(" ".join(['S' if cell == 'S' and reveal_ships else '~' if cell == 'S' else cell for cell in row]))
+            print(" ".join(
+                [
+                    'S' if cell == 'S' and reveal_ships else '~' if cell == 'S' else cell 
+                    for cell in row
+                ]
+            ))
         print()
 
     def place_ship(self):
@@ -47,7 +52,7 @@ class Board:
                         else:  # orientation == 'V'
                             self.board[row + i][col] = 'S'
                             self.ships.add((row + i, col))
-                    break 
+                    break
 
     def valid_ship_position(self, row, col, length, orientation):
         """
@@ -114,7 +119,10 @@ class Board:
                 if 0 <= row < size and 0 <= col < size:
                     return row, col
                 else:
-                    print(f"Invalid input. Please enter numbers within the range 0 to {size - 1}.")
+                    print(
+                        f"Invalid input. Please enter numbers "
+                        "within the range 0 to 5."
+                    )
             except ValueError:
                 print("Invalid input. Please enter valid numbers.")
 
@@ -199,8 +207,14 @@ def new_game():
         which in this case is 17."""
         if player_score == total_ship_cells:
             print("========================================\n")
-            print(f"Congratulations {user_name}, you sunk all your opponents ships!")
-            print(f"Final score: Player {player_score}, Computer {computer_score}")
+            print(
+                f"Congratulations {user_name}, "
+                "you sunk all your opponents ships!"
+            )
+            print(
+                f"Final score: Player {player_score}, "
+                 "Computer {computer_score}"
+            )
             print("========================================\n")
             break
 
@@ -215,7 +229,10 @@ def new_game():
         if computer_score == total_ship_cells:
             print("========================================\n")
             print(f"Oh no the computer won! Better luck next time.")
-            print(f"Final score: Player {player_score}, Computer {computer_score}\n")
+            print(
+                f"Final score: Player {player_score}, "
+                "Computer {computer_score}\n"
+            )
             print("========================================\n")
             break
 
@@ -228,6 +245,6 @@ def new_game():
             print("========================================\n")
             print("Thanks for playing!\n")
             break
-               
+
 
 new_game()
