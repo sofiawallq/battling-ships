@@ -3,7 +3,7 @@ This game is based on the classic Battleship game, this time created using Pytho
 
 The players goal is to find and sink all of the opponents battleships before they find theirs. The opponent in this case is the computer. 
 
-![printscreen design](assets/images_readme)
+![printscreen design](assets/images_readme/)
 
 
 ## How to play
@@ -29,7 +29,7 @@ The player and the computer take turn in guessing the location of the opponents 
 
 Before starting with the code for the project I made a simple Flowchart using [Lucidchart](https://www.lucidchart.com/pages/?) to collect my thoughts and draw a simple picture of what features and problems I needed solutions to. 
 
-![printscreen flowchart](assets/images_readme/)
+![printscreen flowchart](assets/images_readme/flowchart.jpg)
 
 ### Existing features
 
@@ -84,10 +84,10 @@ I manually tested the program by doing the following:
 
 ## Validator testing
 
-I ran the PEP8 Python Validator a few times through out the coding process and fixed the errors as they occured, so that I would not have an enormous list to fix in the end.
-* ---No errors were returned from [PEP8 Python Validator](https://pep8ci.herokuapp.com/) in the finished project. Hopefully ...
+I ran the PEP8 Python Validator a few times throughout the coding process and fixed the errors as they occured, so that I would not have an enormous list to fix in the end.
+* No errors were returned from [PEP8 Python Validator](https://pep8ci.herokuapp.com/) in the finished project.
 
-![printscreen pep8 validation](assets/images_readme/)
+![printscreen pep8 validation](assets/images_readme/pep8_validator.jpg)
 
 
 ## Bugs 
@@ -114,7 +114,7 @@ This project was deployed using Code Institutes mock terminal for Heroku.
 
 Steps for deployment in Heroku:
 
-
+!!!!!!!!!!!!!!!!!
 
 The site was deployed to GitHub pages. The steps to deploy are as follows:
 In the GitHub repository, navigate to the Settings tab
@@ -130,7 +130,7 @@ The link to the mock terminal can be found here -
 
 * The use of the "try and except" command used for some invalid input I took from the Love Sandwiches code along, as well as some wisdom on how to structure the code.
 
-* For the init-function at the top of the code I took some help from the [Project Portfolio Scope Video]() along with the logic around the Board-class.
+* For the init-function at the top of the code I took some help from the [Project Portfolio Scope Video](!!!!!!!)!!!!!! along with the logic around the Board-class.
 
 * Some help with the Python built-in functions i got from the [Python library](https://docs.python.org/3/library/functions.html)
 

@@ -27,11 +27,13 @@ class Board:
         """
         for row in self.board:
             print(" ".join(
-                [
-                    'S' if cell == 'S' and reveal_ships else '~' if cell == 'S' else cell 
-                    for cell in row
-                ]
-            ))
+            [
+                'S' if cell == 'S' and reveal_ships 
+                else '~' if cell == 'S' 
+                else cell 
+                for cell in row
+            ]
+        ))
         print()
 
     def place_ship(self):
