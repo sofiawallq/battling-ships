@@ -1,5 +1,5 @@
 # The great battle of the ships!
-This game is based on the classic Battleship game, this time created using Python and runs in the Code Institute mock terminal on Heroku.
+This game is based on the classic Battleship game, a popular bord game that also can be as basic as a pen, a paper and a battle strategy. This version is a one player game created using Python, and it runs in the Code Institute mock terminal on Heroku.
 
 The players goal is to find and sink all of the opponents battleships before they find theirs. The opponent in this case is the computer. 
 
