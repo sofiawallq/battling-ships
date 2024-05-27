@@ -112,8 +112,8 @@ class Board:
             """
         while True:
             try:
-                row = int(input(f"Guess a row (0 to {size - 1}): "))
-                col = int(input(f"Guess a column (0 to {size - 1}): "))
+                row = int(input(f"Guess a row (0 to {size - 1}): \n"))
+                col = int(input(f"Guess a column (0 to {size - 1}): \n"))
                 if 0 <= row < size and 0 <= col < size:
                     return row, col
                 else:
