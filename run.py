@@ -26,14 +26,7 @@ class Board:
         Hiding computers ships from the other player with the reveal_ships.
         """
         for row in self.board:
-            print(" ".join(
-            [
-                'S' if cell == 'S' and reveal_ships 
-                else '~' if cell == 'S' 
-                else cell 
-                for cell in row
-            ]
-        ))
+            print(" ".join(['S' if cell == 'S' and reveal_ships else '~' if cell == 'S' else cell for cell in row]))
         print()
 
     def place_ship(self):
@@ -51,7 +44,7 @@ class Board:
                         if orientation == 'H':
                             self.board[row][col + i] = 'S'
                             self.ships.add((row, col + i))
-                        else:  # orientation == 'V'
+                        else:  # if orient. == 'V'
                             self.board[row + i][col] = 'S'
                             self.ships.add((row + i, col))
                     break
@@ -61,16 +54,18 @@ class Board:
         Function for validating the placement of ships at the beginning
         of the game. Making sure no ships overlaps.
         """
-        if orientation == 'H' and col + length > self.size:
-            return False
-        if orientation == 'V' and row + length > self.size:
-            return False
-
-        for i in range(length):
-            if orientation == 'H' and self.board[row][col + i] != '~':
+        if orientation == 'H': 
+            if col + length > self.size:
                 return False
-            if orientation == 'H' and self.board[row][col + i] != '~':
+            for i in range(length):
+                if self.board[row][col + i] != '~':
+                    return False
+        else:  # if orient. == 'V'
+            if row + length > self.size:
                 return False
+            for i in range(length):
+                if self.board[row + i][col] != '~':
+                    return False
         return True
 
     def shot_already_taken(self, row, col):
@@ -80,7 +75,7 @@ class Board:
         """
         return (row, col) in self.guesses
 
-    def handle_shot(self, row, col, size, player_shots):
+    def handle_shot(self, row, col):
         """
         Handle a shot at the given position
         and return whether it was a hit or miss.
@@ -88,7 +83,7 @@ class Board:
         while True:
             if self.shot_already_taken(row, col):
                 print("Oh, you've already shot here! Please try again.")
-                row, col = self.get_player_shot(size, player_shots)
+                row, col = self.get_player_shot(self.size, None)
             else:
                 break
 
@@ -197,7 +192,7 @@ def new_game():
         print("Take a shot at your opponent's battlefield:")
         while True:
             row, col = player_board.get_player_shot(size, player_shots)
-            result = computer_board.handle_shot(row, col, size, player_shots)
+            result = computer_board.handle_shot(row, col)
             print(f"Player guessed ({row}, {col}) and {result}")
             if result != "Oh, you've already shot here! Please try again":
                 if result == "That was a hit!":
@@ -215,14 +210,14 @@ def new_game():
             )
             print(
                 f"Final score: Player {player_score}, "
-                 "Computer {computer_score}"
+                f"Computer {computer_score}"
             )
             print("========================================\n")
             break
 
         # Computer's turn
         row, col = computer_board.get_computer_shot(size, computer_shots)
-        result = player_board.handle_shot(row, col, size, computer_shots)
+        result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
             computer_score += 1

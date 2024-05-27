@@ -68,6 +68,8 @@ A return message in the form of "Oops, not a valid username. Please enter your n
 
 * The option to choose your own board size and the number of ships woud also be a fun feature.  
 
+Congrats after each sunk ship
+
 
 ## Data model eg class
 
@@ -97,6 +99,8 @@ I ran the PEP8 Python Validator a few times throughout the coding process and fi
 * Some of the biggest issues I had to solve were issues with the score counting, which in the end turned out to be because of some whitespace causing trouble. The score also started counting from 1 instead of 0 for some time. 
 
 * The most hair loss was caused by the functions to give the player a new guess when they had already guessed for those coordinaties, in the end there was an issue with the calling of the handle_shot function that I managed to solve in the end.
+
+* At the last manual testings I noticed that the program didn't always print out 17 ships on my board,
 
 * I had some problems with GitPod not running as it should in the local terminal in the beginnig of the project - so to start with there were some copy + paste from working with the project in [replit](https://replit.com/) as well, but that solved itself after a while luckily. 
 
