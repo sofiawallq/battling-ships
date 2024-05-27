@@ -110,7 +110,9 @@ I ran the PEP8 Python Validator a few times throughout the coding process and fi
 
 * The most hair loss was caused by the functions to give the player a new guess when they had already guessed for those coordinaties, in the end there was an issue with the calling of the handle_shot function that I managed to solve.
 
-* At the last manual testings I noticed that the program didn't always print out 17 ships on my board, so I had to change valid_ship_position function since it didn't validate ships positioned outside the board size.
+* At the last manual testings in my local terminal I noticed that the program didn't always print out 17 ships on my board, so I had to change valid_ship_position function since it didn't validate ships positioned outside the board size.
+
+* When the project was deployed to Heroku a new problem appeard - when the game was supposed to end no winner or loser-message appeard, the game just continued to ask for input even though the player had reached the total number of ship cells on the board. So a new debugging session began with printing-messages to track the score count and actions throughout the game process. It came down to a single break-statement that had been wrongfully indented - which I pretty much solved by accident ... but its nice to have luck on your side sometimes. 
 
 * I had some problems with GitPod not running as it should in the local terminal in the beginnig of the project - so to start with there were some copy + paste from working with the project in [replit](https://replit.com/) as well, but that solved itself after a while luckily. 
 
