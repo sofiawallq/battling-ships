@@ -219,7 +219,7 @@ def new_game():
             )
             print(
                 f"Final score: Player {player_score}, "
-                f"Computer {computer_score}"
+                f"Computer {computer_score}\n"
             )
             print("========================================\n")
             break

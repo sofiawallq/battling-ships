@@ -66,7 +66,7 @@ A return message in the form of "Oops, not a valid username. Please enter your n
 * The game continues until one player sinks all the opponents ships. There is a function to check after each round if either the player or the computer has reached the total number of ship cells given in order to win - and if the player wins they get at printed message with a congratulations along with the final score. If the player loose they get a "Better luck next time" along with the final score.
 
 
-![printscreen winner message](assets/images_readme/)
+![printscreen winner message](assets/images_readme/winner_message.jpg)
 
 ### Features left to implement
 
@@ -133,7 +133,7 @@ Steps for deployment in Heroku:
 * Under the "Deploy"-tab choose Deployment method GitHub and connect to the right repository. 
 * Manually deploy the project via main-branch.
 
-The link to the mock terminal in Heroku can be found here - https://battle-of-the-ships-bf10998e45dd.herokuapp.com/
+The link to the mock terminal in Heroku can be found here: [https://battle-of-the-ships-bf10998e45dd.herokuapp.com/](https://battle-of-the-ships-bf10998e45dd.herokuapp.com/)
 
 
 ## Credits
