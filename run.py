@@ -7,8 +7,8 @@ ships = [2, 3, 3, 4, 5]
 class Board:
     """
     Main game board. Creates both players battlefield according to given
-    board size, placing ships on the boards and handling shots for both
-    the player and the computer.
+    board size, placing ships at random on the boards, and handling shots
+    for both the player and the computer.
     __init__ function created with the help of Project 3 Portfolio Scope.
     """
     def __init__(self, size, num_ships=None, user_name=None):
@@ -32,7 +32,8 @@ class Board:
 
     def place_ship(self):
         """
-        Function for placing ships on the board. Randomly for each new game.
+        Function for placing ships on the board. Random placement
+        for each new game.
         """
         for length in ships:
             while True:
@@ -78,7 +79,7 @@ class Board:
 
     def handle_shot(self, row, col):
         """
-        Handle a shot at the given position
+        Handle a shot at the given position for both players
         and return whether it was a hit or miss.
         """
         while True:
@@ -101,7 +102,7 @@ class Board:
 
     def sunk_all_ships(self):
         """
-        Check if all ships have been hit.
+        Check if all ships have been hit after each round.
         """
         return len(self.ships) == 0
 
@@ -145,7 +146,7 @@ def get_username():
     print("Let's start by adding a username!")
     print("Username must be one word, letters only.")
     while True:
-        user_name = input("Please enter your name here: \n")
+        user_name = input("Enter your name here: \n")
         print()
         if user_name.isalpha():
             print(f"Hello and welcome {user_name} - let the battle begin!\n")
@@ -155,6 +156,13 @@ def get_username():
 
 
 def new_game():
+    """
+    Function running at the beginning of each new game containing
+    welcome messages. Also contains the games main loop with calling of
+    functions in the right order. Methods for checking and updating both
+    players scores after each round, and finally prints a winner or
+    loser message to the player, along with final score.
+    """
     size = 6
     num_ships = 5
     player_score = 0
@@ -169,27 +177,27 @@ def new_game():
     user_name = get_username()
     print("========================================\n")
 
-    # Create battlefields for player and computer
+    # Create battlefield for player and computer
     player_board = Board(size)
     computer_board = Board(size)
 
-    # Place ships for the player and computer
+    # Place ships for player and computer
     player_board.place_ship()
     computer_board.place_ship()
 
     computer_shots = set()
     player_shots = set()
 
-    # Main playing loop
+    # Main game loop
     while True:
-        # Print player's battlefield
+        # Print players battlefield
         print(f"{user_name}'s battlefield:")
         player_board.print_board(reveal_ships=True)
-        # Print computer's visible battlefield
+        # Print computers visible battlefield
         print("Computer's battlefield:")
         computer_board.print_board(reveal_ships=False)
 
-        # Player's turn
+        # Players turn
         print("Take a shot at your opponent's battlefield:")
         while True:
             row, col = player_board.get_player_shot(size, player_shots)
@@ -201,8 +209,8 @@ def new_game():
                 break
 
         """Check if player hit all ships and if so print winner-message.
-        sum() adds up the length of all the ships to see who reaches it first,
-        which in this case is 17."""
+        total_ship_cells adds up the length of all the ships to see who
+        reaches it first, which in this case is 17."""
         if player_score == total_ship_cells:
             print("========================================\n")
             print(
@@ -216,20 +224,20 @@ def new_game():
             print("========================================\n")
             break
 
-        # Computer's turn
+        # Computers turn
         row, col = computer_board.get_computer_shot(size, computer_shots)
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
             computer_score += 1
 
-        # Check if computer hit all ships and if so print winner-message
+        # Check if computer hit all ships and if so print losing-message
         if computer_score == total_ship_cells:
             print("========================================\n")
             print(f"Oh no the computer won! Better luck next time.")
             print(
                 f"Final score: Player {player_score}, "
-                "Computer {computer_score}\n"
+                f"Computer {computer_score}\n"
             )
             print("========================================\n")
             break
@@ -238,7 +246,8 @@ def new_game():
         print("After this round, the scores are:")
         print(f"{user_name}: {player_score}")
         print(f"Computer: {computer_score}\n")
-        cont = input("Press 'Enter' to continue, or 'q' and then 'Enter' to quit\n")
+        cont = input(f"Press 'Enter' to continue, or "
+                     f"'q' and then 'Enter' to quit\n")
         if cont == 'q':
             print("========================================\n")
             print("Thanks for playing!\n")

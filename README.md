@@ -40,7 +40,7 @@ A return message in the form of "Oops, not a valid username. Please enter your n
 
 * After a correct username is provided a welcome message is returned to the player. The program then print two boards to the game area, paired with a function to randomly place ships on both players boards.
 
-![printscreen welcomemessage and username](assets/images_readme/)
+![printscreen welcome message and username](assets/images_readme/)
 
 * There is also a function for hiding the Computers ships on the board from the other player.
 
@@ -56,7 +56,7 @@ A return message in the form of "Oops, not a valid username. Please enter your n
 
 * A score tracking system that adds a point to the players when they hit the opponents ship.
 
-* After each round the player gets a response about the current score, and are then aksed to either press "Enter" to continue playing, or "q" to quit. If the choose to quit the get a "Thanks for playing!" 
+* After each round the player gets a response about the current score, and are then aksed to either press "Press 'Enter' to continue, 'q' and then 'Enter' to quit!. If the choose to quit the get a "Thanks for playing!" 
 
 * The game continues until one player sinks all the opponents ships. There is a function to check after each round if either the player or the computer has reached the total number of ship cells given in order to win - and if the player wins they get at printed message with a congratulations along with the final score. If the player loose they get a "Better luck next time" along with the final score.
 
