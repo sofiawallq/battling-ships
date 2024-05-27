@@ -6,8 +6,8 @@ ships = [2, 3, 3, 4, 5]
 
 class Board:
     """
-    Main game board. Creates both players battlefield according to given size,
-    placing ships on the boards and handling shots for both
+    Main game board. Creates both players battlefield according to given
+    board size, placing ships on the boards and handling shots for both
     the player and the computer.
     __init__ function created with the help of Project 3 Portfolio Scope.
     """
@@ -26,7 +26,8 @@ class Board:
         Hiding computers ships from the other player with the reveal_ships.
         """
         for row in self.board:
-            print(" ".join(['S' if cell == 'S' and reveal_ships else '~' if cell == 'S' else cell for cell in row]))
+            print(" ".join(['S' if cell == 'S' and reveal_ships else '~'
+                           if cell == 'S' else cell for cell in row]))
         print()
 
     def place_ship(self):
@@ -54,7 +55,7 @@ class Board:
         Function for validating the placement of ships at the beginning
         of the game. Making sure no ships overlaps.
         """
-        if orientation == 'H': 
+        if orientation == 'H':
             if col + length > self.size:
                 return False
             for i in range(length):
