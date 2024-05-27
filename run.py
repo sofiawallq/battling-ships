@@ -142,7 +142,7 @@ def get_username():
     Function for getting players name and thus creating a username.
     Contains validation for correct input.
     """
-    print("Let's start by adding a username")
+    print("Let's start by adding a username!")
     print("Username must be one word, letters only.")
     while True:
         user_name = input("Please enter your name here: \n")
@@ -162,7 +162,7 @@ def new_game():
     total_ship_cells = sum(ships)
     print("========================================\n")
     print("Welcome to the great Battle of the ships!")
-    print("Board size: 6x6. Number of ships: 5.")
+    print("Board size: 6x6. Number of ships: 5")
     print("Size of ships vary from 2-5 spaces.")
     print("Top left corner is row 0, col 0\n")
     print("========================================\n")
@@ -238,7 +238,7 @@ def new_game():
         print("After this round, the scores are:")
         print(f"{user_name}: {player_score}")
         print(f"Computer: {computer_score}\n")
-        cont = input("Press 'Enter' to continue, or 'q' to quit\n")
+        cont = input("Press 'Enter' to continue, or 'q' and then 'Enter' to quit\n")
         if cont == 'q':
             print("========================================\n")
             print("Thanks for playing!\n")
