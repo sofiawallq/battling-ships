@@ -95,15 +95,18 @@ class Board:
             self.board[row][col] = '*'
             self.ships.remove((row, col))
             self.ships_hit.add((row, col))
+            print("That was a hit!")  # print statement for debugging
             return "That was a hit!"
         else:
             self.board[row][col] = 'X'
+            print("That was a miss.")  # print statement for debugging
             return "That was a miss."
 
     def sunk_all_ships(self):
         """
         Check if all ships have been hit after each round.
         """
+        print("All ships sunk!")  # print statement for debugging
         return len(self.ships) == 0
 
     def get_player_shot(self, size, player_shots):
@@ -212,17 +215,14 @@ def new_game():
         total_ship_cells adds up the length of all the ships to see who
         reaches it first, which in this case is 17."""
         if player_score == total_ship_cells:
-            print("========================================\n")
-            print(
-                f"Congratulations {user_name}, "
-                "you sunk all your opponents ships!"
-            )
-            print(
-                f"Final score: Player {player_score}, "
-                f"Computer {computer_score}"
-            )
-            print("========================================\n")
+            print("Congratulations, you sunk all your opponent's ships!")  # print statement for debugging
+            print("Final score: Player", player_score, "Computer", computer_score)  # print statement for debugging
             break
+
+        
+        # print statement for debugging
+        print("Player score:", player_score)
+        print("Total ship cells:", total_ship_cells) 
 
         # Computers turn
         row, col = computer_board.get_computer_shot(size, computer_shots)
