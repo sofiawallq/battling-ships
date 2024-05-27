@@ -208,10 +208,6 @@ def new_game():
                     player_score += 1
                 break
 
-        # Debugging print statements
-        print(f"DEBUG: Player score: {player_score}")
-        print(f"DEBUG: Total ship cells: {total_ship_cells}")
-
         """Check if player hit all ships and if so print winner-message.
         total_ship_cells adds up the length of all the ships to see who
         reaches it first, which in this case is 17."""
@@ -233,10 +229,7 @@ def new_game():
         result = player_board.handle_shot(row, col)
         print(f"Computer shot at ({row}, {col}) and {result}\n")
         if result == "That was a hit!":
-            computer_score += 1
-
-        # Debugging print statements
-        print(f"DEBUG: Computer score: {computer_score}")    
+            computer_score += 1 
 
         # Check if computer hit all ships and if so print losing-message
         if computer_score == total_ship_cells:
